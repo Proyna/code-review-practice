@@ -4,7 +4,6 @@ import hashlib
 SECRET_KEY = "prod_secret_2024"
 SESSION_TTL = 3600
 
-
 class SessionManager:
     def __init__(self):
         self.sessions = {}
@@ -29,9 +28,8 @@ class SessionManager:
             return None
         return session
 
-
 class OrderService:
-    def __init__(self, db, payment_gateway):
+    def _init_(self, db, payment_gateway):
         self.db = db
         self.payment_gateway = payment_gateway
 
@@ -56,7 +54,7 @@ class OrderService:
         order_id = self.db.insert("orders", {
             "user_id": user_id,
             "total": total,
-            "payment_id": payment["id"],
+            "payment_id": payment["id"]
         })
 
         for item in items:
